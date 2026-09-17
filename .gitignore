@@ -5,3 +5,5 @@ __pycache__/
 data/*.jpg
 data/*.png
 .env
+data/**/*.tsv
+data/raw/
