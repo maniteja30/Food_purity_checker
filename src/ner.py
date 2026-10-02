@@ -1,5 +1,6 @@
 import re
 
+
 def extract_ingredients(text: str) -> list[str]:
     cleaned = text.lower()
     cleaned = re.sub(r"ingredients:?", "", cleaned)
