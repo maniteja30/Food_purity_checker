@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from src.ocr import extract_text
 from src.ner import extract_ingredients
+from src.matching import classify_ingredients
 
 app = FastAPI()
 
@@ -14,4 +15,5 @@ async def scan_label(file: UploadFile = File(...)) -> dict:
     extracted_text = extract_text(contents)
     full_text = " ".join(extracted_text)
     ingredients = extract_ingredients(full_text)
-    return {"filename": file.filename, "extracted_text": extracted_text, "ingredients:": ingredients}
+    classified = classify_ingredients(ingredients)
+    return {"filename": file.filename, "extracted_text": extracted_text, "ingredients:": classified}
