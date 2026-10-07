@@ -1,16 +1,8 @@
+import json
 from rapidfuzz import process, fuzz
 
-INGREDIENT_DB = {
-    "potato": "natural",
-    "sunflower oil": "natural",
-    "salt": "natural",
-    "sugar": "natural",
-    "monosodium glutamate": "artificial",
-    "sodium benzoate": "high-risk",
-    "natural flavour": "natural",
-    "artificial color": "artificial",
-    "high fructose corn syrup": "high-risk",
-}
+with open("data/processed/ingredients_db.json") as f:
+    INGREDIENT_DB = json.load(f)
 
 def match_ingredient(ingredient: str, threshold: int = 80):
     match, score, _ = process.extractOne(
