@@ -5,7 +5,7 @@ from rapidfuzz import process, fuzz
 with open("data/processed/ingredients_db.json") as f:
     INGREDIENT_DB = json.load(f)
 
-E_PATTERN = re.compile(r"^e\s?(\d{3,4}[a-z]?)$")
+E_PATTERN = re.compile(r"^(?:e|ins)[\s\-]?(\d{3,4}[a-z]?)$")
 
 def match_ingredient(ingredient: str, threshold: int = 80):
     code = E_PATTERN.match(ingredient)
